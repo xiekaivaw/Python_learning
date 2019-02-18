@@ -134,14 +134,14 @@ else:
 '''
 
 # 回数是指从左向右读和从右向左读都是一样的数，例如12321，909。请利用filter()筛选出回数：
-# 方案一
 '''
+# 方案一
 def is_palindrome(n):
     l = str(n)
     for k in range(0,len(l)):
         if l[k] != l[-k-1]:
             return False
-    return True '''
+    return True 
 # 方案二
 def is_palindrome(n):
     nn = str(n) #转成字符串
@@ -153,3 +153,27 @@ if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11,
     print('测试成功!')
 else:
     print('测试失败!')
+'''
+# 利用闭包返回一个计数器函数，每次调用它返回递增整数
+'''
+def createCounter():
+    def creat_counter():
+        c = 1
+        while True:
+            yield c
+            c += 1
+    cc = creat_counter()
+    def counter():
+        return next(cc)
+    return counter
+
+# 测试
+counterA = createCounter()
+print(counterA(), counterA(), counterA(), counterA(), counterA()) # 1 2 3 4 5
+
+counterB = createCounter()
+if [counterB(), counterB(), counterB(), counterB()] == [1, 2, 3, 4]:
+    print('测试通过!')
+else:
+    print('测试失败!')
+'''
