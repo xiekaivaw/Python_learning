@@ -1,4 +1,4 @@
-# test
-第一个项目
- 我在Windows上新增的项目
+# Python 学习
+第一个Python项目
+ 记录根据廖雪峰Python学习教程中的作业，已经一些Python程序。
  
