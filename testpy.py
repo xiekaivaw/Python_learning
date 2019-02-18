@@ -112,6 +112,7 @@ print(L2)
 '''
 
 # 利用map和reduce编写一个str2float函数，把字符串'123.456'转换成浮点数123.456：
+'''
 from functools import reduce
 DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
 def str2float(s):
@@ -127,6 +128,28 @@ def str2float(s):
 
 print('str2float(\'123.456\') =', str2float('123.456'))
 if abs(str2float('123.456') - 123.456) < 0.00001:
+    print('测试成功!')
+else:
+    print('测试失败!')
+'''
+
+# 回数是指从左向右读和从右向左读都是一样的数，例如12321，909。请利用filter()筛选出回数：
+# 方案一
+'''
+def is_palindrome(n):
+    l = str(n)
+    for k in range(0,len(l)):
+        if l[k] != l[-k-1]:
+            return False
+    return True '''
+# 方案二
+def is_palindrome(n):
+    nn = str(n) #转成字符串
+    return nn == nn[::-1] #反转字符串并对比原字符串返回true/false
+# 测试:
+output = filter(is_palindrome, range(1, 1000))
+print('1~1000:', list(output))
+if list(filter(is_palindrome, range(1, 200))) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161, 171, 181, 191]:
     print('测试成功!')
 else:
     print('测试失败!')
