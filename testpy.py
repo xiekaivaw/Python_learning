@@ -177,3 +177,32 @@ if [counterB(), counterB(), counterB(), counterB()] == [1, 2, 3, 4]:
 else:
     print('测试失败!')
 '''
+
+# 编写一个decorator，能在函数调用的前后打印出'begin call'和'end call'的日志。
+# 使其既支持：@log 又支持：@log('execute')
+'''
+import functools
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('begin call')
+            print("%s func = %s" % (text, func.__name__))
+            r = func(*args, **kw)
+            print('end call')
+            return r
+        return wrapper
+    return decorator if isinstance(text, str) else decorator(text)
+
+# 测试
+@log
+def f():
+    pass
+f()
+
+@log('execute')
+def g():
+    pass
+g()
+'''
+
