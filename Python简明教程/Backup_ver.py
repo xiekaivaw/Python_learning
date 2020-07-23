@@ -19,7 +19,17 @@ today = target_dir + os.sep + time.strftime('%Y%m%d')
 now = time.strftime('%H%M%S')
 
 # Zip文件的格式
-target = today + os.sep + now + '.zip'
+# 添加一条来自用户的注释以创建zip文件名
+comment = input('Enter a comment -->')
+
+# 检查是否有评论输入
+if len(comment) == 0:
+    target = today + os.sep + now + '.zip'
+else:
+    target = today + os.sep + now + '_' + \
+            comment.replace(' ', '_') + '.zip'
+
+# target = today + os.sep + now + '.zip'
 
 # 如果子目录不存在则创建一个
 if not os.path.exists(today):
